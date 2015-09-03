@@ -3,8 +3,8 @@ require_once __DIR__ . '/vendor/recaptcha/src/autoload.php';
 require_once __DIR__ . '/lib/Certificado.php';
 
 // Register API keys at https://www.google.com/recaptcha/admin
-$siteKey = '6LeuAQwTAAAAAGnyma2yRSgPCN4np5UNsuyujc8S';
-$secret = '6LeuAQwTAAAAACCIdsaPomMfsFRfTkd6zT7GjaiD';
+$siteKey = '6LcqTwwTAAAAAFN1qbYjyrXIE-IgBRc8Vk8k0zva';
+$secret = '6LcqTwwTAAAAAJgUbSgbpK66GuMng3Y9K154KUXw';
 
 // reCAPTCHA supported 40+ languages listed here: https://developers.google.com/recaptcha/docs/language
 $lang = 'es';
