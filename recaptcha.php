@@ -1,6 +1,5 @@
 <?php
-
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/recaptcha/src/autoload.php';
 require_once __DIR__ . '/lib/Certificado.php';
 
 // Register API keys at https://www.google.com/recaptcha/admin
