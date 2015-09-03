@@ -52,7 +52,7 @@ require_once __DIR__ . '/vendor/securimage/securimage.php';
 
             <p>
               CAPTCHA:
-              <img id="captcha" src="/vendor/securimage/securimage_show.php" alt="CAPTCHA Image" />
+              <img id="captcha" src="/certificado/vendor/securimage/securimage_show.php" alt="CAPTCHA Image" />
               <a href="#" onclick="document.getElementById('captcha').src = '/vendor/securimage/securimage_show.php?' + Math.random(); return false">[ Cambiar ]</a>
             </p>
             <p>
