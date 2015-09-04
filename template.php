@@ -26,63 +26,63 @@ require_once __DIR__ . '/lib/QR.php';
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-    	// $securimage = new Securimage();
-     //    if ($securimage->check($_POST['captcha_code']) == false) {
-     //        echo "El CAPTCHA ingresado es incorrecto.<br /><br />";
-     //        echo "Por favor <a href='javascript:history.go(-1)'>vuelve</a> a intentarlo.";
-     //        exit;
-     //    }
+        $securimage = new Securimage();
+            if ($securimage->check($_POST['captcha_code']) == false) {
+                echo "El CAPTCHA ingresado es incorrecto.<br /><br />";
+                echo "Por favor <a href='javascript:history.go(-1)'>vuelve</a> a intentarlo.";
+                exit;
+            }
 
         ob_end_clean();
         header("Content-Encoding: None", true);
 
-    	\PhpOffice\PhpWord\Autoloader::register();
+      	\PhpOffice\PhpWord\Autoloader::register();
 
-		$phpWord = new \PhpOffice\PhpWord\PhpWord();
+    		$phpWord = new \PhpOffice\PhpWord\PhpWord();
 
-		$filenameModelo = "modelo2.docx";
+    		$filenameModelo = "modelo2.docx";
 
-		$template = $phpWord->loadTemplate($filenameModelo);
-		$template->setValue('proveedor', $_POST['prestador']);
-		$template->setValue('chofer', $_POST['chofer']);
-		$template->setValue('matricula', $_POST['matricula']);
-		$template->setValue('dni', $_POST['dni']);
-		$template->setValue('curso', $_POST['curso']);
-		$template->setValue('sede', $_POST['sede']);
-		$template->setValue('fechacurso', $_POST['fecha_curso']);
-		$template->setValue('numero', $_POST['transaccion']);
-		$template->setValue('fechatrans', $_POST['fecha_transaccion']);
+    		$template = $phpWord->loadTemplate($filenameModelo);
+    		$template->setValue('proveedor', $_POST['prestador']);
+    		$template->setValue('chofer', $_POST['chofer']);
+    		$template->setValue('matricula', $_POST['matricula']);
+    		$template->setValue('dni', $_POST['dni']);
+    		$template->setValue('curso', $_POST['curso']);
+    		$template->setValue('sede', $_POST['sede']);
+    		$template->setValue('fechacurso', $_POST['fecha_curso']);
+    		$template->setValue('numero', $_POST['transaccion']);
+    		$template->setValue('fechatrans', $_POST['fecha_transaccion']);
 
-		// QR
-    	$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" . "status_chofer.php";
-    	$qrFile = generarQR($url);
-    	$template->setImageValue("image1.png", $qrFile);
+    		// QR
+      	$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" . "status_chofer.php";
+      	$qrFile = generarQR($url);
+      	$template->setImageValue("image1.png", $qrFile);
 
-		$filename = 'output.docx';
-		$filenamePdf = 'output.pdf';
-		$template->saveAs($filename);
+    		$filename = 'output.docx';
+    		$filenamePdf = 'output.pdf';
+    		$template->saveAs($filename);
 
-		 try {
-		 	$comando = "soffice --convert-to pdf " . $filename . " --headless";
-			$output = shell_exec($comando);
-			//header('Content-Description: File Transfer');
-			//header('Content-type: application/force-download');
-			header('Content-Type: application/pdf');
-			header('Content-Disposition: inline; filename="'.$filenamePdf.'"');
-			header('Cache-Control: private, max-age=0, must-revalidate');
-			header('Pragma: public');
-			//header('Content-Disposition: attachment; filename='.basename($filenamePdf));
-			//header('Content-Transfer-Encoding: binary');
-			//header('Content-Length: '.filesize($filenamePdf));
-			readfile($filenamePdf);
-		} catch (Exception $e) {
-			echo "<pre>" . $e->getMessage() . "</pre>";
-		};
+        try {
+      		 	$comando = "soffice --convert-to pdf " . $filename . " --headless";
+      			$output = shell_exec($comando);
+      			//header('Content-Description: File Transfer');
+      			//header('Content-type: application/force-download');
+      			header('Content-Type: application/pdf');
+      			header('Content-Disposition: inline; filename="'.$filenamePdf.'"');
+      			header('Cache-Control: private, max-age=0, must-revalidate');
+      			header('Pragma: public');
+      			//header('Content-Disposition: attachment; filename='.basename($filenamePdf));
+      			//header('Content-Transfer-Encoding: binary');
+      			//header('Content-Length: '.filesize($filenamePdf));
+      			readfile($filenamePdf);
+    		} catch (Exception $e) {
+      			echo "<pre>" . $e->getMessage() . "</pre>";
+    		};
 
-		unlink($filename);
-		unlink($filenamePdf);
-		unlink($qrFile);
-      } else {
+    		unlink($filename);
+    		unlink($filenamePdf);
+        unlink($qrFile);
+    } else {
     ?>
     <p>Completar el formulario e ingrese el CAPTCHA</p>
     <form action="" method="post">
