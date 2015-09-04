@@ -9,7 +9,7 @@ function crear_certificado($parametros) {
     $pdf->SetFont('Arial', '', 12);
 
     // IMAGENES
-    
+
     // QR
     $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" . "status_chofer.php";
     $qrFile = generarQR($url);
@@ -22,7 +22,7 @@ function crear_certificado($parametros) {
     $pdf->Ln(15);
 
     // TITULO
-    $title = '<p align="center"><b><u>CERTIFICADO DE CAPACITACION DE SUSTANCIAS PELIGROSAS</u></b></p>';
+    $title = '<p align="center"><b><u>CERTIFICADO DE CAPACITACIÓN PARA EL TRANSPORTE DE MERCANCÍAS PELIGROSAS</u></b></p>';
 
     $pdf->WriteHTML($title);
 
@@ -44,7 +44,7 @@ EOD;
 
     // BLOQUE 2
     $html = <<<'EOD'
-Se expide el presente Certificado que faculta al interesado para ejercer dicha profesión y disfrutar los derechos que a este grado le otorga la legislación vigente.
+Se expide el presente Certificado, a los efectos de la obtención de la Licencia Nacional habilitante.
 La vigencia del mismo es de UN (1) año a partir de la fecha de realización del Curso de Capacitación.
 EOD;
 
