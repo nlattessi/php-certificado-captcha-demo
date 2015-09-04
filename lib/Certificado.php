@@ -6,6 +6,11 @@ require_once __DIR__ . '/QR.php';
 function crear_certificado($parametros) {
     $pdf=new PDF_HTML('L', 'mm', 'Letter', 20, 7);
     $pdf->AddPage();
+
+    $pdf->SetlineWidth(0.264583333);
+    $pdf->setDrawColor(74, 112, 139);
+    $pdf->Rect(17.01800, 4.318000, $pdf->w - 17.01800 - 17.01800, $pdf->h - 4.318000 - 4.318000);
+
     $pdf->SetFont('Arial', '', 12);
 
     // IMAGENES
@@ -40,7 +45,7 @@ EOD;
 
     $pdf->WriteHTML($html);
 
-    $pdf->Ln(10);
+    $pdf->Ln(20);
 
     // BLOQUE 2
     $html = <<<'EOD'
@@ -81,23 +86,7 @@ EOD;
     $pdf->Cell(0, 5, utf8_decode($parametros['fecha_transaccion']), 0, 1, 'R');
     $pdf->setFont('Arial', '', 12);
 
-    $pdf->Ln(38);
-
-    // FIRMAS
-    $texto = 'Firma del Director del Prestador de Servicios';
-    $pdf->Cell(100, 5, utf8_decode($texto), 0, 0, 'L');
-    $pdf->Cell(50, 5, '', 0, 0, 'L');
-    $texto = 'Firma del Auditor de la Comisión Nacional';
-    $pdf->Cell(100, 5, utf8_decode($texto), 0, 0, 'L');
-
-    $pdf->Ln(5);
-
-    $texto = 'de Formacion Profesional.';
-    $pdf->Cell(15, 5, '', 0, 0, 'L');
-    $pdf->Cell(50, 5, utf8_decode($texto), 0, 0, 'L');
-    $texto = 'del Tránsito y la Seguridad Vial.';
-    $pdf->Cell(95, 5, '', 0, 0, 'L');
-    $pdf->Cell(90, 5, utf8_decode($texto), 0, 0, 'L');
+    $pdf->Ln(45);
 
     return $pdf;
 }
