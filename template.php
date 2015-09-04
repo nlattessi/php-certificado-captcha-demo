@@ -64,6 +64,8 @@ require_once __DIR__ . '/lib/QR.php';
 
         try {
       		 	$comando = "soffice --convert-to pdf " . $filename . " --headless";
+            //En DigitalOcean
+            //$comando = "sudo /usr/bin/soffice --headless --convert-to pdf --outdir /var/www/test.lattessi.ml/html/certificado/ /var/www/test.lattessi.ml/html/certificado/" . $filename . " 2>/tmp/error.txt";
       			$output = shell_exec($comando);
       			//header('Content-Description: File Transfer');
       			//header('Content-type: application/force-download');
