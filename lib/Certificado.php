@@ -24,7 +24,7 @@ function crear_certificado($parametros) {
     // TITULO
     $title = '<p align="center"><b><u>CERTIFICADO DE CAPACITACIÓN PARA EL TRANSPORTE DE MERCANCÍAS PELIGROSAS</u></b></p>';
 
-    $pdf->WriteHTML($title);
+    $pdf->WriteHTML(utf8_decode($title));
 
     // BLOQUE 1
     $htmlprev = <<<'EOD'
