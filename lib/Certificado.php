@@ -40,7 +40,7 @@ los Conductores de los Vehículos antes mencionados.
 EOD;
 
     $holders = ["#PRESTADOR", "#CHOFER", "#MATRICULA", "#DNI", "#CURSO"];
-    $variables = [$parametros['prestador'], $parametros['chofer'], $parametros['matricula'], $parametros['dni'], $parametros['curso']];
+    $variables = [utf8_decode($parametros['prestador']), utf8_decode($parametros['chofer']), utf8_decode($parametros['matricula']), utf8_decode($parametros['dni']), utf8_decode($parametros['curso'])];
     $html = str_replace($holders, $variables, utf8_decode($htmlprev));
 
     $pdf->WriteHTML($html);
