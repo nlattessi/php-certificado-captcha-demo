@@ -11,7 +11,7 @@ function crear_certificado($parametros) {
     // IMAGENES
     
     // QR
-    $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" . "/status_chofer.php";
+    $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" . "status_chofer.php";
     $qrFile = generarQR($url);
     $pdf->Image($qrFile, 18, 8, 0, 30, 'PNG');
     unlink($qrFile);
