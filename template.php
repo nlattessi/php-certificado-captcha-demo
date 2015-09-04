@@ -83,6 +83,8 @@ require_once __DIR__ . '/lib/QR.php';
 
     		unlink($filename);
     		unlink($filenamePdf);
+        // EN DigitalOcean
+        //shell_exec("rm " . $filenamePdf);
         unlink($qrFile);
     } else {
     ?>
