@@ -9,10 +9,13 @@ function crear_certificado($parametros) {
     $pdf->SetFont('Arial', '', 12);
 
     // IMAGENES
-    $url = "http://test.lattessi.ml/certificado/status_chofer.php";
+    
+    // QR
+    $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" . "/status_chofer.php";
     $qrFile = generarQR($url);
-
     $pdf->Image($qrFile, 18, 8, 0, 30, 'PNG');
+    unlink($qrFile);
+
     $pdf->Image(__DIR__ . '/../img/logo2.png', 235, 8, 0, 30);
     $pdf->Image(__DIR__ . '/../img/logo.png', 105, 8, 0, 30);
 

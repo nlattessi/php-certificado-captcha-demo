@@ -59,7 +59,7 @@ $lang = 'es';
           ?></p>
           <p>Chequear el codigo de error en: <tt><a href="https://developers.google.com/recaptcha/docs/verify#error-code-reference">https://developers.google.com/recaptcha/docs/verify#error-code-reference</a></tt>.
           <p><strong>Nota:</strong> El codigo de error <tt>missing-input-response</tt> puede significar que no se completó el reCAPTCHA.</p>
-          <p><a href="/certificado/recaptcha.php">Intentar de nuevo</a></p>
+          <p>Por favor <a href='javascript:history.go(-1)'>vuelve</a> a intentarlo.</p>
     <?php
   }
 else:

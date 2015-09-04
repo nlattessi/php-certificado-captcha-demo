@@ -12,5 +12,4 @@ function generarQR($url) {
     QRCode::png($url, $pngAbsoluteFilePath, 'L', '4', '4');
 
     return $pngAbsoluteFilePath;
-
 }
